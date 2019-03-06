@@ -1,0 +1,17 @@
+
+Table "events":
+ create table events(name varchar(20),amount number,organize_date date);
+ insert into events(name,amount,organize_date)values('paper_presentation',100,date '2019-05-03');
+ insert into events(name,amount,organize_date)values('extempore',150,date '2019-05-04');
+  insert into events(name,amount,organize_date)values('coding_contest',100,date '2019-05-05');
+select * from events;
+commit;
+alter table events add primary key(name);
+
+Table  "student":(student event registration)
+create table student(id number ,email varchar(20),year varchar(20),eventname varchar(20),constraint pk_student_id primary key(id),
+constraint fk_eventname FOREIGN KEY(eventname) references events(name));
+select * from student; 
+
+Table "register":(student account registration)
+create table register(name varchar(20),id number(5),password varchar(20),mobilenumber number,constraint pk_register_id primary key(id));

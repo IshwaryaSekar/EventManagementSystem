@@ -49,59 +49,56 @@ public class RegisterEventsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
+
 		// System.out.println(name);
 		int id = Integer.parseInt(request.getParameter("id"));
 		// System.out.println(id);
 
 		String email = request.getParameter("email");
 		String year = request.getParameter("year");
-	
+
 		String eventname = request.getParameter("eventname");
-		if(Validation.checkId(id)) 
-	    {  
-			if(Validation.checkExists(id)==false) 
-	    {
-		Student student = new Student();
-       
-		student.setId(id);
-		student.setEmail(email);
-		student.setYear(year);
-	
-		Event event = new Event();
-		event.setName(eventname);
-		student.setEvent(event);
-       RegisterEventsDAO dao=new  RegisterEventsDAO();
-		RegisterEventsValidator registerEventsValidator = new RegisterEventsValidator();
+		if (Validation.checkId(id)) {
+			if (Validation.checkExists(id) == false) {
+				Student student = new Student();
 
-		try {
-			registerEventsValidator.validateId(student);
+				student.setId(id);
+				student.setEmail(email);
+				student.setYear(year);
 
-			System.out.println("success");
-			dao.addStudent(student);
-			List<Student> studentList = dao.displayStudentsList();
-			request.setAttribute("STUDENTS", studentList);
-			RequestDispatcher rd = request
-					.getRequestDispatcher("liststudents.jsp");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("failure.html");
-			rd.forward(request, response);
+				Event event = new Event();
+				event.setName(eventname);
+				student.setEvent(event);
+				RegisterEventsDAO dao = new RegisterEventsDAO();
+				RegisterEventsValidator registerEventsValidator = new RegisterEventsValidator();
+
+				try {
+					registerEventsValidator.validateEvents(student);
+
+					//System.out.println("success");
+					dao.addStudent(student);
+					List<Student> studentList = dao.displayStudentsList();
+					request.setAttribute("STUDENTS", studentList);
+					RequestDispatcher rd = request
+							.getRequestDispatcher("liststudents.jsp");
+					rd.forward(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					RequestDispatcher rd = request
+							.getRequestDispatcher("failure.html");
+					rd.forward(request, response);
+				}
+			} else {
+				RequestDispatcher rs = request
+						.getRequestDispatcher("registerexists.html");
+				rs.forward(request, response);
+			}
+		} else {
+
+			RequestDispatcher rs = request
+					.getRequestDispatcher("validateuser.html");
+			rs.forward(request, response);
 		}
 	}
-    else
-    {RequestDispatcher rs = request.getRequestDispatcher("registerexists.html");
-        rs.forward(request, response);
-	    }
-	    }
-		else
-		{
-			
-	        
-	        RequestDispatcher rs = request.getRequestDispatcher("validateuser.html");
-	         rs.forward(request, response);
-}
-}
 }

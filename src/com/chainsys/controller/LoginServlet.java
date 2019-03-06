@@ -20,44 +20,42 @@ import com.chainsys.model.Validation;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	String name=request.getParameter("name");
-	String password=request.getParameter("password");
-       
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
 
-	if(Validation.checkUser(name,password))
-    {    
-	    
-        RequestDispatcher rs = request.getRequestDispatcher("events.html");
-        rs.forward(request, response);
-    }
-    else
-    {
-        
-        RequestDispatcher rs = request.getRequestDispatcher("login.html");
-         rs.forward(request, response);
-    }
-	
-	
-	}
-	}
+		if (Validation.checkUser(name, password)) {
 
+			RequestDispatcher rs = request.getRequestDispatcher("events.html");
+			rs.forward(request, response);
+		} else {
+
+			RequestDispatcher rs = request.getRequestDispatcher("invalidlogin.html");
+			rs.forward(request, response);
+		}
+
+	}
+}

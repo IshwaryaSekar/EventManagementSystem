@@ -3,49 +3,57 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-body
-{
-  background-image:url("image.jpg");
- 
 
+<style>
+body {
+	background-image: url("image.jpg");
 }
+
 .content {
-  max-width: 500px;
-  max-length:300px;
-  margin: auto;
-  background: white;
- 
-  padding-top: 100px;
-  padding-right: 30px;
-  padding-bottom: 50px;
-  padding-left: 80px;
-  text-align:center;
+	max-width: 500px;
+	max-length: 300px;
+	margin: auto;
+	background: white;
+	padding-top: 100px;
+	padding-right: 30px;
+	padding-bottom: 50px;
+	padding-left: 80px;
+	text-align: center;
 }
 </style>
 
 </head>
 <body>
-<div class="content">
-<form method="post" action="LoginServlet">
-<h1>Event Management System</h1><br>
-<h2>Login</h2>
-<table>
-<tbody>
+	<div class="content">
+		<form method="post" action="LoginServlet">
+			<h1>Event Management System</h1>
+			<br>
+			<h2>Login</h2>
+			<table>
+				<tbody>
 
-<tr><td>UserName</td>
-<td><input type="text" name="name" required></td></tr>
+					<tr>
+						<td>UserName</td>
+						<td><input type="text" name="name" required></td>
+					</tr>
 
-<tr><td>Password</td>
-<td><input type="password" name="password" required></td></tr>
-</tbody>
-</table>
-<p><button type="submit">Sign in</button></p><br>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="password" required></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				<button type="submit">Sign in</button>
+			</p>
+			<br>
 
-<p><a href="register.html">Sign Up</a></p><br>
-</form>
+			<p>
+				<a href="register.html">Sign Up</a>
+			</p>
+			<br>
+		</form>
 
-</div>
+	</div>
 </body>
 </html>

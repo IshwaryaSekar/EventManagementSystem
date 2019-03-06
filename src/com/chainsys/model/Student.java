@@ -1,11 +1,11 @@
 package com.chainsys.model;
 
 public class Student {
-	
+
 	private int id;
 	private String email;
 	private String year;
-	
+
 	private Event event;
 
 	public int getId() {
@@ -39,4 +39,5 @@ public class Student {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
-		}
+
+	}

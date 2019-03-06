@@ -4,13 +4,11 @@ import com.chainsys.model.Registration;
 import com.chainsys.model.Student;
 
 public class RegisterEventsValidator {
-	public void validateId(Student student) throws Exception {
-		if(student.getId()<=0)
-		{
+	public void validateEvents(Student student) throws Exception {
+		if (student.getId() <= 0) {
 			throw new Exception("invalid id");
 		}
-			
+
 	}
-	
-	
+
 }

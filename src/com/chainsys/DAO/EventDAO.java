@@ -20,7 +20,7 @@ public class EventDAO {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			//System.out.println(resultSet.getRow());
+			// System.out.println(resultSet.getRow());
 			while (resultSet.next()) {
 				Event event = new Event();
 				event.setName(resultSet.getString("name"));
@@ -28,8 +28,7 @@ public class EventDAO {
 				Date date = resultSet.getDate("organize_date");
 				event.setOrganize_date(resultSet.getDate("organize_date")
 						.toLocalDate());
-				//System.out.println(date);
-				
+				// System.out.println(date);
 
 				eventList.add(event);
 			}

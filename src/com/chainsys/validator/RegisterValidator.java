@@ -20,14 +20,14 @@ public class RegisterValidator {
 		return (m.find() && m.group().equals(mobilenumber));
 	}
 
-	public static boolean isValidPhone(String mobilenumber) {
-		//System.out.println(mobilenumber);
+	public static boolean isValidMobileNumber(String mobilenumber) {
+		
 		if (validNumber(mobilenumber)) {
-			System.out.println("valid");
+		
 			return true;
 		} else {
+
 			
-           System.out.println("invalid");
 			return false;
 		}
 	}

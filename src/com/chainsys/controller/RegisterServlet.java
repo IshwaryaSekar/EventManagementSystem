@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String password = request.getParameter("password");
-		String mobilenumber=request.getParameter("mobilenumber");
+		String mobilenumber = request.getParameter("mobilenumber");
 		Registration registration = new Registration();
 
 		registration.setName(name);
@@ -58,19 +58,27 @@ public class RegisterServlet extends HttpServlet {
 		RegisterValidator registerValidator = new RegisterValidator();
 
 		try {
-			
-			registerValidator.validateId(registration);
-			registerValidator.validNumber( mobilenumber);
-			registerValidator.isValidPhone(mobilenumber);
 
+			registerValidator.validateId(registration);
+
+			if (registerValidator.isValidMobileNumber(mobilenumber)) {
+				dao.addStudentDetails(registration);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("registeraccountsuccess.html");
+				rd.forward(request, response);
+			}
 			// System.out.println("success");
-			dao.addStudentDetails(registration);
-			RequestDispatcher rd = request.getRequestDispatcher("success.html");
-			rd.forward(request, response);
+			// dao.addStudentDetails(registration);
+			else {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("invalidnumber.html");
+				rd.forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("register.html");
+			RequestDispatcher rd = request
+					.getRequestDispatcher("register.html");
 			rd.forward(request, response);
 		}
 
