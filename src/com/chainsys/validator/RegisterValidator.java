@@ -4,32 +4,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.chainsys.model.Registration;
+import com.chainsys.validatorfunctions.ValidatorUtil;
 
 public class RegisterValidator {
-	public void validateId(Registration registration) throws Exception {
-		if (registration.getId() <= 0) {
+	public void validateRegistration(Registration registration)
+			throws Exception {
+		if (!ValidatorUtil.isValidId(registration.getId())) {
 			throw new Exception("invalid id");
 		}
-
-	}
-
-	public static boolean validNumber(String mobilenumber) {
-		Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
-
-		Matcher m = p.matcher(mobilenumber);
-		return (m.find() && m.group().equals(mobilenumber));
-	}
-
-	public static boolean isValidMobileNumber(String mobilenumber) {
-		
-		if (validNumber(mobilenumber)) {
-		
-			return true;
-		} else {
-
-			
-			return false;
+		if (!ValidatorUtil.isValidName(registration.getName())) {
+			throw new Exception("No name ");
 		}
-	}
+		if (!ValidatorUtil.isValidPassword(registration.getPassword())){
+			throw new Exception("No password");
+		}
+		
+		if (!ValidatorUtil.isValidMobileNumber(registration.getMobilenumber())){
+			//System.out.println("Failed - Mobile no validation':" + registration.getMobilenumber());
+			throw new Exception("invalid mobilenumber");
+		}
+		
+	
 
-}
+}}

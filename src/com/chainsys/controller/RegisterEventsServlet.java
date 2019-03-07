@@ -14,9 +14,10 @@ import com.chainsys.DAO.RegisterEventsDAO;
 import com.chainsys.model.Event;
 import com.chainsys.model.Registration;
 import com.chainsys.model.Student;
-import com.chainsys.model.Validation;
+
 import com.chainsys.validator.RegisterEventsValidator;
 import com.chainsys.validator.RegisterValidator;
+import com.chainsys.validatorfunctions.FunctionalityValidator;
 
 /**
  * Servlet implementation class RegisterEventsServlet
@@ -58,16 +59,19 @@ public class RegisterEventsServlet extends HttpServlet {
 		String year = request.getParameter("year");
 
 		String eventname = request.getParameter("eventname");
-		if (Validation.checkId(id)) {
-			if (Validation.checkExists(id) == false) {
+		if (FunctionalityValidator.checkId(id)) {
+			if (FunctionalityValidator.checkExists(id) == false) {
 				Student student = new Student();
 
 				student.setId(id);
+				System.out.println(student);
+
 				student.setEmail(email);
 				student.setYear(year);
 
 				Event event = new Event();
 				event.setName(eventname);
+				
 				student.setEvent(event);
 				RegisterEventsDAO dao = new RegisterEventsDAO();
 				RegisterEventsValidator registerEventsValidator = new RegisterEventsValidator();
@@ -86,18 +90,19 @@ public class RegisterEventsServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					RequestDispatcher rd = request
-							.getRequestDispatcher("failure.html");
+							.getRequestDispatcher("studentdatafailure.html");
 					rd.forward(request, response);
 				}
 			} else {
+				request.setAttribute("ERROR1", "One student can participate only one event");
 				RequestDispatcher rs = request
-						.getRequestDispatcher("registerexists.html");
+						.getRequestDispatcher("registerevents.jsp");
 				rs.forward(request, response);
 			}
 		} else {
-
-			RequestDispatcher rs = request
-					.getRequestDispatcher("validateuser.html");
+			request.setAttribute("ERROR2", "You can register events after you registering your  account....");
+           RequestDispatcher rs = request
+					.getRequestDispatcher("registerevents.jsp");
 			rs.forward(request, response);
 		}
 	}

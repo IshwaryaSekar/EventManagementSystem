@@ -28,6 +28,13 @@ body {
 
 		<h1>Registration process</h1>
 		<br>
+		
+		<%
+String errorMessage = (String) request.getAttribute("ERROR_MSG");
+		if(errorMessage != null){
+			out.println ("Error Message:" + errorMessage);
+		}
+%>
 		<form method="post" action="RegisterServlet">
 
 			<table>

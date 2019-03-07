@@ -56,7 +56,8 @@ public class ListOfEventsServlet extends HttpServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("failure.html");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("eventdatafailure.html");
 			rd.forward(request, response);
 		}
 

@@ -54,31 +54,25 @@ public class RegisterServlet extends HttpServlet {
 		registration.setPassword(password);
 		registration.setMobilenumber(mobilenumber);
 
+		System.out.println(registration.toString());
 		RegisterDAO dao = new RegisterDAO();
 		RegisterValidator registerValidator = new RegisterValidator();
 
 		try {
 
-			registerValidator.validateId(registration);
+			registerValidator.validateRegistration(registration);
 
-			if (registerValidator.isValidMobileNumber(mobilenumber)) {
-				dao.addStudentDetails(registration);
-				RequestDispatcher rd = request
-						.getRequestDispatcher("registeraccountsuccess.html");
-				rd.forward(request, response);
-			}
-			// System.out.println("success");
-			// dao.addStudentDetails(registration);
-			else {
-				RequestDispatcher rd = request
-						.getRequestDispatcher("invalidnumber.html");
-				rd.forward(request, response);
-			}
+			dao.addStudentDetails(registration);
+			RequestDispatcher rd = request
+					.getRequestDispatcher("registeraccountsuccess.html");
+			rd.forward(request, response);
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
+			request.setAttribute("ERROR_MSG", e.getMessage());
 			e.printStackTrace();
 			RequestDispatcher rd = request
-					.getRequestDispatcher("register.html");
+					.getRequestDispatcher("register.jsp");
 			rd.forward(request, response);
 		}
 

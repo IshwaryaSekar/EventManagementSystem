@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.model.Validation;
+
+import com.chainsys.validator.LoginValidator;
 
 /**
  * Servlet implementation class LoginServlet
@@ -47,13 +48,13 @@ public class LoginServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
-		if (Validation.checkUser(name, password)) {
+		if (LoginValidator.checkUser(name, password)) {
 
 			RequestDispatcher rs = request.getRequestDispatcher("events.html");
 			rs.forward(request, response);
 		} else {
-
-			RequestDispatcher rs = request.getRequestDispatcher("invalidlogin.html");
+           request.setAttribute("ERROR", "Invalid username or password");
+			RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
 			rs.forward(request, response);
 		}
 

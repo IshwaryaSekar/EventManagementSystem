@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
 <style>
 body {
 	background-image: url("image.jpg");
@@ -49,8 +49,9 @@ body {
 		</table>
 
 		<p>
-			<a href="registerevents.html">Click here to register events</a>
+			<a href="registerevents.jsp">Click here to register events</a>
 		</p>
+		
 	</div>
 
 </body>

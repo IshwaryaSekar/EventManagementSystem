@@ -13,7 +13,7 @@ public class RegisterEventsDAO {
 	public void addStudent(Student student) throws Exception {
 		try {
 			Connection connection = ConnectionUtil.getConnection();
-			String sql = "insert into student (id,email,year,eventname) values (?,?,?,?)";
+			String sql = "insert into register_event (id,email,year,eventname) values (?,?,?,?)";
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
 
@@ -36,7 +36,7 @@ public class RegisterEventsDAO {
 
 		try {
 			Connection connection = ConnectionUtil.getConnection();
-			String sql1 = "select id,email,year,eventname from student10 order by id asc";
+			String sql1 = "select id,email,year,eventname from register_event order by id asc";
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql1);
 			ResultSet resultSet = preparedStatement.executeQuery();

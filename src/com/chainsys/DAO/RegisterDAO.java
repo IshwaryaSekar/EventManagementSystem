@@ -11,7 +11,7 @@ public class RegisterDAO {
 	public void addStudentDetails(Registration registration) throws Exception {
 		try {
 			Connection connection = ConnectionUtil.getConnection();
-			String sql = "insert into register (name,id,password,mobilenumber) values (?,?,?,?)";
+			String sql = "insert into register_account (name,id,password,mobilenumber) values (?,?,?,?)";
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
 			preparedStatement.setString(1, registration.getName());

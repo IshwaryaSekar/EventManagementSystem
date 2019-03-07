@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style>
 body {
 	background-image: url("image.jpg");
@@ -20,9 +21,10 @@ body {
 	text-align: center;
 }
 </style>
+
 </head>
 <body>
-	<div class="content">
+<div class="content">
 
 		<form method="post" action="RegisterEventsServlet">
 			<h1>Event Registration</h1>
@@ -31,7 +33,7 @@ body {
 				<tbody>
 					<tr>
 						<td>Id</td>
-						<td><input type="number" name="id"></td>
+						<td><input type="number" name="id" required></td>
 					</tr>
 					<tr>
 						<td>Year</td>
@@ -54,7 +56,7 @@ body {
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td><input type="email" name="email"></td>
+						<td><input type="email" name="email" required></td>
 					</tr>
 					<tr>
 						<td>EventName</td>
@@ -80,7 +82,10 @@ body {
 				<button type="submit">Ok</button>
 			</p>
 			<br>
+			<h3>${ERROR1}</h3>
+			<h3>${ERROR2}</h3>
 		</form>
 	</div>
+
 </body>
 </html>
