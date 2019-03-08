@@ -19,10 +19,21 @@ body {
 	padding-left: 80px;
 	text-align: center;
 }
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
 </style>
 
 </head>
 <body>
+<div class="topright">
+		<a href="home.html">LogOut</a>
+	</div>
+	
 	<div class="content">
 
 
@@ -44,7 +55,7 @@ String errorMessage = (String) request.getAttribute("ERROR_MSG");
 						<td><input type="text" name="name" required></td>
 					</tr>
 					<tr>
-						<td>Id</td>
+						<td>Id(Number Only)</td>
 						<td><input type="number" name="id" required></td>
 					</tr>
 					<tr>

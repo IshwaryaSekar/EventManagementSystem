@@ -1,11 +1,6 @@
 package com.chainsys.model;
 
 public class Registration {
-	@Override
-	public String toString() {
-		return "Registration [name=" + name + ", id=" + id + ", password="
-				+ password + ", mobilenumber=" + mobilenumber + "]";
-	}
 	private String name;
 	private int id;
 	private String password;

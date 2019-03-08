@@ -25,7 +25,25 @@ public class LoginValidator {
 		}
 		return statement;
 	}
+	public static boolean checkId(int id) {
+		boolean statement = false;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			// System.out.println(connection);
+			String sql = "select * from register_account where id=?";
+			PreparedStatement preparedStatement = connection
+					.prepareStatement(sql);
+			preparedStatement.setInt(1,id);
+		
+			ResultSet resultSet = preparedStatement.executeQuery();
+			statement = resultSet.next();
+           System.out.println(statement);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return statement;
+	}
 
-
+	
 
 }

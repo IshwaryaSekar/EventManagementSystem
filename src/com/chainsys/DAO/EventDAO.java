@@ -16,7 +16,7 @@ public class EventDAO {
 		try {
 			Connection connection = ConnectionUtil.getConnection();
 
-			String sql = "select name,amount,organize_date from events ";
+			String sql = "select name,amount,organize_date from events_information ";
 			PreparedStatement preparedStatement = connection
 					.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();

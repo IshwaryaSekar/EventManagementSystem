@@ -59,12 +59,13 @@ public class RegisterEventsServlet extends HttpServlet {
 		String year = request.getParameter("year");
 
 		String eventname = request.getParameter("eventname");
+		
 		if (FunctionalityValidator.checkId(id)) {
 			if (FunctionalityValidator.checkExists(id) == false) {
 				Student student = new Student();
 
 				student.setId(id);
-				System.out.println(student);
+				//System.out.println(student);
 
 				student.setEmail(email);
 				student.setYear(year);

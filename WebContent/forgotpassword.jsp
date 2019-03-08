@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,39 +22,31 @@ body {
 	text-align: center;
 }
 </style>
+
 </head>
 <body>
-	<div class="content">
-		<h1>Successfully Registered....</h1>
+<div class="content">
+<form method="post" action="ForgotPasswordServlet">
+<h2>Forgot Password</h2>
+<table>
+				<tbody>
 
-	<!--  	
-	 <table>
-			<thead>
-				<tr>
-
-
-					<th>Id</th>
-					<th>Email</th>
-					<th>Year</th>
-
-					<th>Event Name</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="student" items="${STUDENTS}">
 					<tr>
-
-						<td>${student.id}</td>
-						<td>${student.email}</td>
-						<td>${student.year}</td>
-
-						<td>${student.event.name}</td>
-
+						<td>Id</td>
+						<td><input type="number" name="id" required></td>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>  
-		-->
-	</div>
+
+					<tr>
+						<td> Create new Password</td>
+					<td><input type="password" name="password" required></td>
+					</tr>
+					
+				</tbody>
+				</table>
+                   <p>
+					<button type="submit">Ok</button>
+					</p>	
+					<h3>${ERROR}</h3>
+</div>
 </body>
 </html>

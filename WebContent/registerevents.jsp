@@ -20,10 +20,22 @@ body {
 	padding-left: 80px;
 	text-align: center;
 }
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
 </style>
 
 </head>
 <body>
+<div class="topright">
+		<a href="home.html">LogOut</a>
+	</div>
+	<br>
+	
 <div class="content">
 
 		<form method="post" action="RegisterEventsServlet">

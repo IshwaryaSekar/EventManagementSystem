@@ -47,6 +47,7 @@ public class RegisterServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String password = request.getParameter("password");
 		String mobilenumber = request.getParameter("mobilenumber");
+		System.out.println("MOB NO"+mobilenumber);
 		Registration registration = new Registration();
 
 		registration.setName(name);
@@ -54,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 		registration.setPassword(password);
 		registration.setMobilenumber(mobilenumber);
 
-		System.out.println(registration.toString());
+		//System.out.println(registration.toString());
 		RegisterDAO dao = new RegisterDAO();
 		RegisterValidator registerValidator = new RegisterValidator();
 
