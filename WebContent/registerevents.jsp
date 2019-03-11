@@ -45,51 +45,39 @@ body {
 				<tbody>
 					<tr>
 						<td>Id</td>
-						<td><input type="number" name="id" required></td>
-					</tr>
-					<tr>
-						<td>Year</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="year" value="first_year"></td>
-						<td>First Year</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="year" value="second_year"></td>
-						<td>SecondYear</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="year" value="third_year"></td>
-						<td>Third Year</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="year" value="final_year"></td>
-						<td>FinalYear</td>
+						<td><input type="number" name="id" pattern="[0-9]{3}" title="Id must contain only 3-digit numbers(100-999)" required></td>
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td><input type="email" name="email" required></td>
+						<td><input type="email" name="email"  required"></td>
 					</tr>
 					<tr>
-						<td>EventName</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="eventname"
-							value="paper_presentation"></td>
-						<td>Paper Presentation</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="eventname" value="extempore"></td>
-						<td>Extempore</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="eventname"
-							value="coding_contest"></td>
-						<td>Coding contest</td>
-					</tr>
-				</tbody>
-			</table>
-
+					<td>
+					Year</td>
+					<td>
+					<select>
+				    <option value="first_year">First Year</option>
+					<option value="second_year">Second Year</option>
+				    <option value="third_year">Third Year</option>			
+				   <option value="final_year">Final Year</option>
+				   </select>
+				   </td>
+				   </tr>
+				   <tr><td>
+		          EventName</td>
+		          <td>
+		          <select>
+				    <option value="paper_presentation">Paper Presentation</option>
+					<option value="extempore">Extempore</option>
+				    <option value="coding_contest">Coding Contest </option>	
+				    			
+				    		
+				   </select>
+				   </td></tr>
+				   </tbody>
+					</table>
+					
+					
 			<p>
 				<button type="submit">Ok</button>
 			</p>

@@ -57,7 +57,7 @@ public class RegisterEventsServlet extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String year = request.getParameter("year");
-
+         
 		String eventname = request.getParameter("eventname");
 		
 		if (FunctionalityValidator.checkId(id)) {

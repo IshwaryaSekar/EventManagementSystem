@@ -18,36 +18,23 @@ body {
 	padding-bottom: 50px;
 	padding-left: 80px;
 }
-<
-title
->
-Event
 
-
-
- 
-
-
-
-Management
-
-
-System
-
-
-
-
-
-
-</
-title
->
+.topright {
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	font-size: 18px;
+}
 </style>
 </head>
 <body>
+	<div class="topright">
+		<a href="home.html">LogOut</a>
+	</div>
+	<br>
+
 	<form method="post" action="ListOfEventsServlet">
 		<div class="a">
-
 			<h1>Welcome to Event Management System</h1>
 			<br>
 			<button type="submit">Click here to see the list of events</button>

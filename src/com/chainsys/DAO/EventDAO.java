@@ -5,21 +5,22 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.chainsys.model.Event;
 import com.chainsys.util.ConnectionUtil;
 
 public class EventDAO {
-	public ArrayList<Event> displayEvents() throws Exception {
-		ArrayList<Event> eventList = new ArrayList<Event>();
-
+	public List<Event> displayEvents() throws Exception {
+		List<Event> eventList = new ArrayList<Event>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
 		try {
-			Connection connection = ConnectionUtil.getConnection();
-
+			connection = ConnectionUtil.getConnection();
 			String sql = "select name,amount,organize_date from events_information ";
-			PreparedStatement preparedStatement = connection
-					.prepareStatement(sql);
-			ResultSet resultSet = preparedStatement.executeQuery();
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
 			// System.out.println(resultSet.getRow());
 			while (resultSet.next()) {
 				Event event = new Event();
@@ -32,14 +33,14 @@ public class EventDAO {
 
 				eventList.add(event);
 			}
-			ConnectionUtil.close(connection, preparedStatement, resultSet);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			// throw new Exception("Unable to find book");
-
+		} finally {
+			ConnectionUtil.close(connection, preparedStatement, resultSet);
 		}
-
 		return eventList;
 
 	}

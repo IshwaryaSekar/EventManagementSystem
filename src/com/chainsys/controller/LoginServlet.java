@@ -50,8 +50,8 @@ public class LoginServlet extends HttpServlet {
 
 		if (LoginValidator.checkUser(name, password)) {
 
-			RequestDispatcher rs = request.getRequestDispatcher("events.html");
-			rs.forward(request, response);
+			RequestDispatcher requestdispatcher = request.getRequestDispatcher("events.html");
+			requestdispatcher.forward(request, response);
 		} else {
            request.setAttribute("ERROR", "Invalid username or password");
 			RequestDispatcher rs = request.getRequestDispatcher("login.jsp");

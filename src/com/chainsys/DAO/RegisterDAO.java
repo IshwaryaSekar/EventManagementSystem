@@ -9,11 +9,12 @@ import com.chainsys.util.ConnectionUtil;
 
 public class RegisterDAO {
 	public void addStudentDetails(Registration registration) throws Exception {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
 		try {
-			Connection connection = ConnectionUtil.getConnection();
+			connection = ConnectionUtil.getConnection();
 			String sql = "insert into register_account (name,id,password,mobilenumber) values (?,?,?,?)";
-			PreparedStatement preparedStatement = connection
-					.prepareStatement(sql);
+			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, registration.getName());
 			// System.out.println(registration.getName());
 			preparedStatement.setInt(2, registration.getId());
@@ -21,10 +22,12 @@ public class RegisterDAO {
 			preparedStatement.setString(4, registration.getMobilenumber());
 			int rows = preparedStatement.executeUpdate();
 			System.out.println("Rows inserted: " + rows);
-			ConnectionUtil.close(connection, preparedStatement, null);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			// throw new Exception("Unable to insert book");
+		} finally {
+			ConnectionUtil.close(connection, preparedStatement, null);
 		}
 	}
 

@@ -21,11 +21,12 @@ body {
 	padding-left: 80px;
 	text-align: center;
 }
+
 .topright {
-  position: absolute;
-  top: 8px;
-  right: 16px;
-  font-size: 18px;
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	font-size: 18px;
 }
 </style>
 
@@ -39,19 +40,23 @@ body {
 		<form method="post" action="LoginServlet">
 			<h1>Event Management System</h1>
 			<br>
-			<h2>Login</h2>
+			<h2>Log In</h2>
 			<table>
 				<tbody>
 
 
 					<tr>
 						<td>UserName</td>
-						<td><input type="text" name="name" required></td>
+						<td><input type="text" name="name" pattern="[A-Za-z]+"
+							title="Username should only contain uppercase and lowercase letters"
+							required></td>
 					</tr>
 
 					<tr>
 						<td>Password</td>
-						<td><input type="password" name="password" required></td>
+						<td><input type="password" name="password"
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters    required "></td>
 					</tr>
 				</tbody>
 			</table>
@@ -69,8 +74,6 @@ body {
 				<a href="register.jsp">Sign Up</a>
 			</p>
 			<br>
-
-
 
 		</form>
 		<h3>${ERROR}</h3>
